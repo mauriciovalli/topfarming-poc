@@ -15,6 +15,7 @@ import java.net.URI
 import javax.inject.Inject
 import javax.validation.Valid
 
+
 @Validated
 @Controller("/genres")
 class GenreController {
@@ -28,12 +29,16 @@ class GenreController {
 
         // Check if HTTP Accept header is "application/x-protobuf".
         if (headerAcceptProto(headers)) {
-            val genreProto: GenreProto.Genre = MapperUtils.convert(genreDto)
-            return HttpResponse.ok(genreProto)
+          if(genreDto!=null) {
+              val genreProto: GenreProto.Genre = MapperUtils.convert(genreDto)
+              return HttpResponse.ok(genreProto)
+          } else {
+              return HttpResponse.notFound<GenreProto.Genre>()
+          }
         }
 
         // Default response as JSON.
-        return HttpResponse.ok(genreDto)
+        return if(genreDto!=null) HttpResponse.ok(genreDto) else HttpResponse.notFound<GenreDto>()
     }
 
     @Get("/list")
