@@ -10,16 +10,16 @@ import org.junit.jupiter.api.Test
 import javax.inject.Inject
 
 @MicronautTest
-class HelloControllerTest {
+class HomeControllerTest {
     @Inject
     @field:Client("/")
     lateinit var client : HttpClient
 
     @Test
     fun testHello() {
-        val request: HttpRequest<Any> = HttpRequest.GET("/hello")
+        val request: HttpRequest<Any> = HttpRequest.GET("/")
         val body = client.toBlocking().retrieve(request)
         assertNotNull(body)
-        assertEquals("Hello World", body)
+        assertEquals("Hello Top Farming", body)
     }
 }
