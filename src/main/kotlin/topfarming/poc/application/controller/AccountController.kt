@@ -1,4 +1,4 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -8,7 +8,7 @@ import topfarming.poc.domain.proto.AccountProto
 
 @Validated
 @Controller("/account")
-class AccountControler {
+class AccountController {
 
     @Get("/", produces = ["application/x-protobuf"])
     fun show(): AccountProto.Account {

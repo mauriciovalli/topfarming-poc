@@ -1,11 +1,10 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import io.micronaut.http.HttpHeaders
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
-import io.micronaut.http.annotation.Produces
 
 @Controller("/message", produces = arrayOf(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 class MessageController {

@@ -5,12 +5,12 @@ import org.modelmapper.config.Configuration
 import org.modelmapper.convention.MatchingStrategies
 
 object MapperUtils {
-    val mapper = MapperDto()
+    val mapper = MyModelMapper()
 
     inline fun <S, reified T> convert(source: S): T = mapper.map(source, T::class.java)
 }
 
-class MapperDto() : ModelMapper() {
+class MyModelMapper() : ModelMapper() {
     init {
         configuration.matchingStrategy = MatchingStrategies.LOOSE
         configuration.fieldAccessLevel = Configuration.AccessLevel.PRIVATE

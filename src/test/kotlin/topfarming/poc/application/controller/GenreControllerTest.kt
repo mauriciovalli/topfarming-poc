@@ -1,4 +1,4 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import com.fasterxml.jackson.core.type.TypeReference
 import io.micronaut.http.HttpHeaders
@@ -11,7 +11,7 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
-import topfarming.poc.TestUtils
+import topfarming.poc.util.TestUtils
 import topfarming.poc.domain.dto.GenreDto
 import topfarming.poc.domain.model.Genre
 import javax.inject.Inject

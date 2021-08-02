@@ -1,4 +1,4 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.HttpClient

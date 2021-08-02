@@ -1,16 +1,15 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Produces
 
-@Controller("/hello")
-class HelloController {
-
+@Controller
+class HomeController {
     @Get("/")
     @Produces(MediaType.TEXT_PLAIN)
     fun index(): String {
-        return "Hello World"
+        return "Hello Top Farming"
     }
 }

@@ -1,4 +1,4 @@
-package topfarming.poc.application.rest
+package topfarming.poc.application.controller
 
 import io.micronaut.http.HttpHeaders
 import io.micronaut.http.HttpResponse
@@ -11,6 +11,7 @@ import topfarming.poc.domain.dto.SortingAndOrderArguments
 import topfarming.poc.domain.model.Genre
 import topfarming.poc.domain.proto.GenreProto
 import topfarming.poc.domain.service.GenreService
+import topfarming.poc.util.ControllerUtils.headerAcceptProto
 import java.net.URI
 import javax.inject.Inject
 import javax.validation.Valid
@@ -79,16 +80,5 @@ class GenreController {
 
     protected fun location(genre: GenreDto): URI {
         return location(genre.id)
-    }
-
-    /**
-     * Check HTTP Accept header with value "application/x-protobuf"
-     * is sent by the client.
-     *
-     * @param headers Http headers sent by the client.
-     * @return True if the Accept header contains "application/x-protobuf".
-     */
-    private fun headerAcceptProto(headers: HttpHeaders): Boolean {
-        return headers.accept().contains(MediaType("application/x-protobuf"))
     }
 }
