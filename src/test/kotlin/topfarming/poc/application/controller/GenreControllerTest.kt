@@ -29,7 +29,7 @@ internal class GenreControllerTest {
     fun testFindNonExistingGenreReturns404() {
         //"find non existing genre returns 404"
         val exception = assertFailsWith(HttpClientResponseException::class) {
-            client.toBlocking().exchange<Any, Any>(HttpRequest.GET<Any>("/genres/99"))
+            client.toBlocking().exchange<Any, Any>(HttpRequest.GET("/genres/99"))
         }
         assertEquals(HttpStatus.NOT_FOUND, exception.response.status)
     }
@@ -59,7 +59,8 @@ internal class GenreControllerTest {
         assertEquals("Microservices", genre.name)
 
         request = HttpRequest.GET("/genres/list")
-        val genres = client.toBlocking().retrieve(request, Argument.of(List::class.java, GenreDto::class.java)) //as List<GenreDto>
+        val genres = client.toBlocking()
+            .retrieve(request, Argument.of(List::class.java, GenreDto::class.java)) //as List<GenreDto>
         assertEquals(2, genres.size)
 
         // cleanup:
@@ -84,12 +85,12 @@ internal class GenreControllerTest {
             .retrieve(request.header(ACCEPT, ProtobufferCodec.PROTOBUFFER_ENCODED), GenreProto.Genre::class.java)
         assertEquals("DevOps", genreProto.name)
 
-        request = HttpRequest.DELETE("/genres/" + id)
+        request = HttpRequest.DELETE("/genres/$id")
         response = client.toBlocking().exchange(request)
         assertEquals(HttpStatus.NO_CONTENT, response.status)
     }
 
-    fun entityId(response: HttpResponse<*>): Long? {
+    private fun entityId(response: HttpResponse<*>): Long? {
         val path = "/genres/"
         val value = response.header(HttpHeaders.LOCATION) ?: return null
         val index = value.indexOf(path)

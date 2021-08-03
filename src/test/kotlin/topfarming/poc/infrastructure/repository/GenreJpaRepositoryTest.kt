@@ -3,7 +3,6 @@ package topfarming.poc.infrastructure.repository
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Test
 import topfarming.poc.domain.model.Genre
-import java.util.*
 import javax.inject.Inject
 import kotlin.test.assertEquals
 
@@ -15,9 +14,7 @@ class GenreJpaRepositoryTest {
 
     @Test
     fun testFindAll() {
-        val mocks: List<Genre> =
-            Arrays.asList(Genre("DevOps"), Genre("Microservices"))
-            //Arrays.asList(Genre.builder().label("one").build(), Genre.builder().label("two").build())
+        val mocks = listOf(Genre(name = "DevOps"), Genre(name = "Microservices"))
         genreRepository.saveAll(mocks)
         val genres: List<Genre> = genreRepository.findAll()
 

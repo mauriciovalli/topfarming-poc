@@ -2,8 +2,6 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "${kotlinVersion}"
     id("org.jetbrains.kotlin.kapt") version "${kotlinVersion}"
     id("org.jetbrains.kotlin.plugin.allopen") version "${kotlinVersion}"
-//    id("org.jetbrains.kotlin.plugin.lombok") version "${kotlinVersion}"
-//    id("io.freefair.lombok") version "5.3.3.3"
     id("com.github.johnrengelman.shadow") version "7.0.0"
     id("io.micronaut.application") version "2.0.3"
     id("com.google.protobuf") version "0.8.17"
@@ -25,24 +23,19 @@ micronaut {
     }
 }
 
-//kotlinLombok {
-//    lombokConfigurationFile file("lombok.config")
-//}
-
 dependencies {
-    implementation('io.micronaut:micronaut-http-client:${micronautVersion}')
-    implementation('io.micronaut:micronaut-runtime:${micronautVersion}')
-    implementation('io.micronaut:micronaut-validation:${micronautVersion}')
-    implementation('io.micronaut.kotlin:micronaut-kotlin-runtime')
+    implementation("io.micronaut:micronaut-http-client:${micronautVersion}")
+    implementation("io.micronaut:micronaut-runtime:${micronautVersion}")
+    implementation("io.micronaut:micronaut-validation:${micronautVersion}")
+    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-    implementation('io.micronaut.data:micronaut-data-hibernate-jpa')
-    implementation('io.micronaut.sql:micronaut-hibernate-jpa')
-    implementation('io.micronaut.sql:micronaut-jdbc-hikari')
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
 
     implementation("org.modelmapper:modelmapper:${modelmapperVersion}")
 
-    //https://mvnrepository.com/artifact/com.google.protobuf/protobuf-kotlin
     implementation("com.google.protobuf:protobuf-kotlin:${protobufVersion}")
     implementation("io.micronaut.grpc:micronaut-protobuff-support")
 
@@ -55,12 +48,6 @@ dependencies {
     testImplementation("org.mockito:mockito-core:3.11.2")
     testImplementation("org.mockito:mockito-junit-jupiter:3.11.2")
     testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
-
-    //Lombok
-//    compileOnly("org.projectlombok:lombok:1.18.20")
-//    annotationProcessor("org.projectlombok:lombok:1.18.20")
-//    testCompileOnly("org.projectlombok:lombok:1.18.20")
-//    testAnnotationProcessor("org.projectlombok:lombok:1.18.20")
 }
 
 
@@ -76,7 +63,7 @@ protobuf {
     // Configure the protoc executable
     protoc {
         // Download from repositories
-        artifact = 'com.google.protobuf:protoc:3.17.3'
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
     }
 }
 
