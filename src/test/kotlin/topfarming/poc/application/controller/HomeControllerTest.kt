@@ -16,7 +16,7 @@ class HomeControllerTest {
     lateinit var client : HttpClient
 
     @Test
-    fun testHello() {
+    fun testHome() {
         val request: HttpRequest<Any> = HttpRequest.GET("/")
         val body = client.toBlocking().retrieve(request)
         assertNotNull(body)

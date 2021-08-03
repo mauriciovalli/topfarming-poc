@@ -4,6 +4,7 @@ import io.micronaut.http.HttpHeaders
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
+import io.micronaut.protobuf.codec.ProtobufferCodec
 import io.micronaut.validation.Validated
 import topfarming.poc.domain.dto.GenreDto
 import topfarming.poc.domain.dto.MapperUtils
@@ -24,7 +25,7 @@ class GenreController {
     @Inject
     protected lateinit var genreService: GenreService
 
-    @Get("/{id}", produces = [MediaType.APPLICATION_JSON, "application/x-protobuf"])
+    @Get("/{id}", produces = [MediaType.APPLICATION_JSON, ProtobufferCodec.PROTOBUFFER_ENCODED])
     fun show(id: Long, headers: HttpHeaders): HttpResponse<*> {
         val genreDto = genreService.findById(id)
 
@@ -43,12 +44,12 @@ class GenreController {
     }
 
     @Get("/list")
-    fun list(): List<Genre> {
+    fun list(): List<GenreDto> {
         return genreService.findAll()
     }
 
     @Get("/listSort{?args*}")
-    fun list(@Valid args: SortingAndOrderArguments): List<Genre> {
+    fun list(@Valid args: SortingAndOrderArguments): List<GenreDto> {
         return genreService.findAll(args)
     }
 

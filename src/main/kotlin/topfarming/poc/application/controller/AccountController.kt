@@ -2,15 +2,12 @@ package topfarming.poc.application.controller
 
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
-import io.micronaut.validation.Validated
+import io.micronaut.protobuf.codec.ProtobufferCodec
 import topfarming.poc.domain.proto.AccountProto
 
-
-@Validated
 @Controller("/account")
 class AccountController {
-
-    @Get("/", produces = ["application/x-protobuf"])
+    @Get("/", produces = [ProtobufferCodec.PROTOBUFFER_ENCODED])
     fun show(): AccountProto.Account {
         val accountBuilder = AccountProto.Account.newBuilder()
         accountBuilder.id = 1

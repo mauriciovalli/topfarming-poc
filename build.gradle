@@ -44,6 +44,7 @@ dependencies {
 
     //https://mvnrepository.com/artifact/com.google.protobuf/protobuf-kotlin
     implementation("com.google.protobuf:protobuf-kotlin:${protobufVersion}")
+    implementation("io.micronaut.grpc:micronaut-protobuff-support")
 
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")

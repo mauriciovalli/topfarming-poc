@@ -12,9 +12,9 @@ interface GenreService {
 
     fun deleteById(id: Long)
 
-    fun findAll(): List<Genre>
+    fun findAll(): List<GenreDto>
 
-    fun findAll(args: SortingAndOrderArguments): List<Genre>
+    fun findAll(args: SortingAndOrderArguments): List<GenreDto>
 
     fun update(dto: GenreDto): Int
 }

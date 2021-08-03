@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
+import topfarming.poc.domain.dto.GenreDto
 import topfarming.poc.domain.model.Genre
 import topfarming.poc.domain.repository.GenreRepository
 import java.util.*
@@ -34,10 +35,11 @@ class GenreServiceTest {
 
         Mockito.`when`(genreRepository.findAll()).thenReturn(mocks)
 
-        val genres: List<Genre> = genreService.findAll()
+        val genres: List<GenreDto> = genreService.findAll()
 
         // Assert the response
-        assertEquals(mocks, genres)
+        assertEquals(mocks.get(0).name, genres.get(0).name)
+        assertEquals(mocks.get(1).name, genres.get(1).name)
 
         verify(genreRepository).findAll()
     }

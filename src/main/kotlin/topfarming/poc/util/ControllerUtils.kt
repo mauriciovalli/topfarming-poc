@@ -1,7 +1,7 @@
 package topfarming.poc.util
 
 import io.micronaut.http.HttpHeaders
-import io.micronaut.http.MediaType
+import io.micronaut.protobuf.codec.ProtobufferCodec
 
 object ControllerUtils {
     /**
@@ -12,6 +12,6 @@ object ControllerUtils {
      * @return True if the Accept header contains "application/x-protobuf".
      */
     fun headerAcceptProto(headers: HttpHeaders): Boolean {
-        return headers.accept().contains(MediaType("application/x-protobuf"))
+        return headers.accept().contains(ProtobufferCodec.PROTOBUFFER_ENCODED_TYPE)
     }
 }
