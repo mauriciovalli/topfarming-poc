@@ -31,8 +31,9 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run: gradle dependencies
+      - run:
+          name: Gradle Dependencies
+          command: gradle dependencies
 
       - save_cache:
           paths:
@@ -40,4 +41,13 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: gradle test
+      - run:
+          name: Gradle Test
+          command: gradle test
+          
+      - store_test_results:
+          # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: build/test-results/test
+      - store_artifacts: # Upload test results for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: build/test-results/test
+          when: always
