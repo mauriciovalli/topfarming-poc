@@ -4,7 +4,8 @@ import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import topfarming.poc.domain.proto.AccountProto
 import javax.inject.Inject
@@ -25,7 +26,7 @@ class AccountControllerTest {
 
         val request: HttpRequest<Any> = HttpRequest.GET("/account")
         val body = client.toBlocking().retrieve(request, AccountProto.Account::class.java)
-        Assertions.assertNotNull(body)
-        Assertions.assertEquals(expectedAccount, body)
+        assertNotNull(body)
+        assertEquals(expectedAccount, body)
     }
 }

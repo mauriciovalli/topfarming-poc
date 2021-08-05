@@ -2,5 +2,5 @@ applicationType: default
 defaultPackage: topfarming.poc
 testFramework: junit
 sourceLanguage: kotlin
-buildTool: gradle
-features: [app-name, graalvm, gradle, http-client, junit, kotlin, kotlin-application, logback, netty-server, readme, shade, yaml, data-hibernate-jpa]
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, data, data-jpa, gradle, h2, hibernate-jpa, http-client, jackson-xml, jdbc-hikari, junit, kotlin, kotlin-application, logback, mockito, mongo-reactive, netty-server, readme, redis-lettuce, security-annotations, security-oauth2, shade, testcontainers, yaml]

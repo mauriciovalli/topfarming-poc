@@ -1,13 +1,12 @@
-package topfarming.poc.domain.repository
+package topfarming.poc.infrastructure.repository
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import topfarming.poc.domain.model.Genre
 import topfarming.poc.infrastructure.repository.DefaultRedisRepository
 import topfarming.poc.infrastructure.repository.GenreRedisRepositoryImpl
-
 import javax.inject.Inject
-import kotlin.test.assertEquals
 
 @MicronautTest
 class RedisRepositoryTest {

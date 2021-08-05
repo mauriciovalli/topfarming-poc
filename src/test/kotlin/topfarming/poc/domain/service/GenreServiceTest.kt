@@ -2,6 +2,7 @@ package topfarming.poc.domain.service
 
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
@@ -11,7 +12,6 @@ import topfarming.poc.domain.model.Genre
 import topfarming.poc.domain.repository.GenreRepository
 import java.util.*
 import javax.inject.Inject
-import kotlin.test.assertEquals
 
 
 @MicronautTest
@@ -30,8 +30,7 @@ class GenreServiceTest {
     @Test
     fun testFindAll() {
         val mocks: List<Genre> =
-            Arrays.asList(Genre("DevOps"), Genre("Microservices"))
-        //Arrays.asList(Genre.builder().label("one").build(), Genre.builder().label("two").build())
+            Arrays.asList(Genre(name = "DevOps"), Genre(name = "Microservices"))
 
         Mockito.`when`(genreRepository.findAll()).thenReturn(mocks)
 

@@ -11,13 +11,13 @@ import io.micronaut.http.client.annotation.Client
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.protobuf.codec.ProtobufferCodec
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import topfarming.poc.domain.dto.GenreDto
 import topfarming.poc.domain.proto.GenreProto
 import javax.inject.Inject
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 @MicronautTest
 internal class GenreControllerTest {
@@ -28,7 +28,7 @@ internal class GenreControllerTest {
     @Test
     fun testFindNonExistingGenreReturns404() {
         //"find non existing genre returns 404"
-        val exception = assertFailsWith(HttpClientResponseException::class) {
+        val exception = assertThrows(HttpClientResponseException::class.java) {
             client.toBlocking().exchange<Any, Any>(HttpRequest.GET("/genres/99"))
         }
         assertEquals(HttpStatus.NOT_FOUND, exception.response.status)

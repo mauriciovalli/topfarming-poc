@@ -1,10 +1,10 @@
 package topfarming.poc.infrastructure.repository
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import topfarming.poc.domain.model.Genre
 import javax.inject.Inject
-import kotlin.test.assertEquals
 
 @MicronautTest
 class GenreJpaRepositoryTest {

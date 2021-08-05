@@ -17,9 +17,7 @@ open class GenreServiceImpl : GenreService {
     private lateinit var genreRepository: GenreRepository
 
     override fun findById(id: Long): GenreDto? {
-        val optional = genreRepository.findById(id)
-        return if(optional.isPresent) of(optional.get())
-        else null
+        return genreRepository.findById(id).orElse(null)?.let { t-> of(t) }
     }
 
     override fun save(dto: GenreDto): GenreDto {
@@ -33,7 +31,7 @@ open class GenreServiceImpl : GenreService {
 
     override fun findAll(): List<GenreDto> {
         val list: List<Genre> = genreRepository.findAll()
-        return list.stream().map { genre: Genre -> of(genre) }.collect(Collectors.toList())
+        return list.map { genre: Genre -> of(genre) }.toList()
     }
 
     override fun findAll(args: SortingAndOrderArguments): List<GenreDto> {
