@@ -67,7 +67,7 @@ dependencies {
     //Protobuf
     implementation("com.google.protobuf:protobuf-kotlin:${protobufVersion}")
     implementation("io.micronaut.grpc:micronaut-protobuff-support")
-    
+
     //Redis
     testImplementation("com.github.kstyrc:embedded-redis:0.6")
 }

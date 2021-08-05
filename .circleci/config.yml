@@ -33,7 +33,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Gradle Dependencies
-          command: gradle dependencies
+          command: ./gradlew dependencies
 
       - save_cache:
           paths:
@@ -43,7 +43,7 @@ jobs:
       # run tests!
       - run:
           name: Gradle Test
-          command: gradle test
+          command: ./gradlew test
 
       - store_test_results:
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
