@@ -34,10 +34,16 @@ dependencies {
     implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
 
+    //Modelmapper
     implementation("org.modelmapper:modelmapper:${modelmapperVersion}")
 
+    //Protobuf
     implementation("com.google.protobuf:protobuf-kotlin:${protobufVersion}")
     implementation("io.micronaut.grpc:micronaut-protobuff-support")
+
+    //Redis
+    implementation("io.micronaut.redis:micronaut-redis-lettuce")
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
 
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
@@ -48,6 +54,9 @@ dependencies {
     testImplementation("org.mockito:mockito-core:3.11.2")
     testImplementation("org.mockito:mockito-junit-jupiter:3.11.2")
     testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+    //Redis
+    testImplementation("com.github.kstyrc:embedded-redis:0.6")
 }
 
 
@@ -90,8 +99,6 @@ sourceSets {
         }
     }
 }
-//sourceSets.main.java.srcDirs += 'build/generated/source/proto/main/java'
-
 
 tasks {
     compileKotlin {

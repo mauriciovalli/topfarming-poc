@@ -6,7 +6,7 @@
 Se necesita generar un proyecto de código cumpliendo con las definiciones técnicas arriba descriptas y cerradas.
 - Kotlin, Micronaut, GraalVM, Postgres, Redis, Elastic, OAuth
 - Gradle/Kotlin, GraalVM native binary
-- REST con JSON o Protobuf
+- REST con JSON o Protobuff
 
 La aplicación debe tener las siguientes funciones:
 - Exponer métodos de API REST
@@ -19,4 +19,4 @@ La aplicación debe tener las siguientes funciones:
 ## This project uses:
 - Micronaut version 2.5.11
 - Kotlin version 1.5.21
-- Protobuf version 3.17.3
+- Protobuff version 3.17.3

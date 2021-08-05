@@ -1,0 +1,10 @@
+redis:
+    servers:
+        default:
+            uri: redis://localhost
+            ssl: true
+            timeout: 30s
+        entity:
+            uri: redis://localhost/1
+            ssl: true
+            timeout: 30s

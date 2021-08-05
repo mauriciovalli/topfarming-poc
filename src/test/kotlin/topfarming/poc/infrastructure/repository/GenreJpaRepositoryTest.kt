@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
 class GenreJpaRepositoryTest {
 
     @Inject
-    private lateinit var genreRepository: GenreRepositoryImpl
+    private lateinit var genreRepository: GenreJpaRepositoryImpl
 
     @Test
     fun testFindAll() {

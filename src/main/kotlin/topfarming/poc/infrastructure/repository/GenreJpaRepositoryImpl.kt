@@ -2,7 +2,6 @@ package topfarming.poc.infrastructure.repository
 
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.jpa.repository.JpaRepository
-import topfarming.poc.domain.dto.SortingAndOrderArguments
 import topfarming.poc.domain.model.Genre
 import topfarming.poc.domain.repository.GenreRepository
 import javax.transaction.Transactional
@@ -10,7 +9,7 @@ import javax.transaction.Transactional
 
 @Transactional(Transactional.TxType.MANDATORY)
 @Repository
-interface GenreRepositoryImpl :  JpaRepository<Genre, Long>, GenreRepository {
+interface GenreJpaRepositoryImpl :  JpaRepository<Genre, Long>, GenreRepository {
 //    @Transactional
 //    override fun findAll(args: SortingAndOrderArguments): List<Genre> {
 //        //TODO IMPLEMENTAR
