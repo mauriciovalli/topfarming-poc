@@ -15,23 +15,23 @@ abstract class EntityRedisRepository<Entity> {
     @field:[Inject Named("entity")]
     protected lateinit var connection: StatefulRedisConnection<String, String>
 
-    fun getValue(key: String): Entity {
+    protected fun getValue(key: String): Entity? {
         val commands = connection.sync()
         val value = commands.get(getKey(key))
         return JsonUtils.mapFromJson(value, getArgClass())
     }
 
-    fun setValue(key: String, value: Entity): String {
+    protected fun setValue(key: String, value: Entity): String {
         val commands = connection.sync()
         return commands.set(getKey(key), JsonUtils.mapToJson(value))
     }
 
-    fun getKeys(): MutableList<String> {
+    protected fun getKeys(): List<String> {
         val commands = connection.sync()
-        return commands.keys("*")
+        return commands.keys("*").map { t -> t.replace(prefix + "_", "")}
     }
 
-    fun getClean() {
+    fun invalidateCache() {
         val commands = connection.sync()
         getKeys().forEach { key -> commands.del(key) }
     }

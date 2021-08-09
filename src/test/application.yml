@@ -2,7 +2,7 @@ micronaut:
   application:
     name: topfarming
   caches:
-    my-cache: # <1>
+    my-cache:
       charset: 'UTF-8'
   jcache:
     enabled: false

@@ -21,12 +21,12 @@ class DefaultRedisRepository {
         return commands.set(key, value)
     }
 
-    fun getKeys(): MutableList<String> {
+    fun getKeys(): List<String> {
         val commands = connection.sync()
         return commands.keys("*")
     }
 
-    fun getClean() {
+    fun invalidateCache() {
         val commands = connection.sync()
         getKeys().forEach { key -> commands.del(key) }
     }
