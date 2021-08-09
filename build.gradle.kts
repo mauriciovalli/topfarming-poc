@@ -40,6 +40,8 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.mongodb:micronaut-mongo-reactive")
+//    implementation("io.micronaut.cache:micronaut-cache-caffeine")
+    implementation("io.micronaut.cache:micronaut-cache-core")
     implementation("io.micronaut.redis:micronaut-redis-lettuce")
 //    implementation("io.micronaut.security:micronaut-security-oauth2")
     implementation("io.micronaut.sql:micronaut-hibernate-jpa")
@@ -50,6 +52,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
+    compileOnly("org.graalvm.nativeimage:svm")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
     testImplementation("org.testcontainers:testcontainers")
@@ -58,8 +61,6 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation("org.mockito:mockito-core")
-
-
 
     //Modelmapper
     implementation("org.modelmapper:modelmapper:${modelmapperVersion}")

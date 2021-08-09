@@ -5,7 +5,6 @@ import topfarming.poc.domain.dto.GenreDto.Companion.of
 import topfarming.poc.domain.dto.SortingAndOrderArguments
 import topfarming.poc.domain.model.Genre
 import topfarming.poc.domain.repository.GenreRepository
-import java.util.stream.Collectors
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.transaction.Transactional
@@ -17,7 +16,7 @@ open class GenreServiceImpl : GenreService {
     private lateinit var genreRepository: GenreRepository
 
     override fun findById(id: Long): GenreDto? {
-        return genreRepository.findById(id).orElse(null)?.let { t-> of(t) }
+        return genreRepository.findById(id).orElse(null)?.let { t -> of(t) }
     }
 
     override fun save(dto: GenreDto): GenreDto {
@@ -31,7 +30,7 @@ open class GenreServiceImpl : GenreService {
 
     override fun findAll(): List<GenreDto> {
         val list: List<Genre> = genreRepository.findAll()
-        return list.map { genre: Genre -> of(genre) }.toList()
+        return list.map { genre: Genre -> of(genre) }.toMutableList()
     }
 
     override fun findAll(args: SortingAndOrderArguments): List<GenreDto> {

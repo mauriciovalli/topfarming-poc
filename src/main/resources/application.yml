@@ -1,14 +1,21 @@
 micronaut:
     application:
         name: topfarming
+    caches:
+        my-cache: # <1>
+            charset: 'UTF-8'
+    jcache:
+        enabled: false
 application:
     max: 50
 datasources:
     default:
-        url: ${JDBC_URL:`jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`}
+        url: ${JDBC_URL:`jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE`}
+        driverClassName: ${JDBC_DRIVER:org.h2.Driver}
         username: ${JDBC_USER:sa}
         password: ${JDBC_PASSWORD:""}
-        driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+        schema-generate: CREATE_DROP
+        dialect: H2
 jpa:
     default:
         packages-to-scan:
@@ -19,12 +26,21 @@ jpa:
                     auto: update
                 show_sql: true
 redis:
+    uri: redis://localhost:7001/0
+    ssl: true
+    timeout: 30s
+    caches:
+        my-cache:
+            # expire one hour after write
+            expire-after-write: 1h
+            key-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
+            value-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
     servers:
         default:
-            uri: redis://localhost:7001
+            uri: redis://localhost:7001/1
             ssl: true
             timeout: 30s
         entity:
-            uri: redis://localhost:7001/1
+            uri: redis://localhost:7001/2
             ssl: true
             timeout: 30s

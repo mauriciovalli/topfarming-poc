@@ -14,7 +14,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-@MicronautTest
+@MicronautTest(startApplication = false)
 class GenreServiceTest {
     @MockBean(GenreRepository::class)
     fun genreRepository(): GenreRepository? {

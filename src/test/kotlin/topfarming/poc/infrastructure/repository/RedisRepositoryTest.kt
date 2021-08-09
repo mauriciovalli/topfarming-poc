@@ -8,7 +8,7 @@ import topfarming.poc.infrastructure.repository.DefaultRedisRepository
 import topfarming.poc.infrastructure.repository.GenreRedisRepositoryImpl
 import javax.inject.Inject
 
-@MicronautTest
+@MicronautTest(startApplication = false)
 class RedisRepositoryTest {
     @Inject
     private lateinit var genreRepository : GenreRedisRepositoryImpl

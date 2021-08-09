@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import topfarming.poc.domain.model.Genre
 import javax.inject.Inject
 
-@MicronautTest
+@MicronautTest(startApplication = false)
 class GenreJpaRepositoryTest {
 
     @Inject
